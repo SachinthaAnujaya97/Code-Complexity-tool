@@ -27,7 +27,7 @@ import static jdk.nashorn.internal.parser.TokenType.EOF;
 
 /**
  *
- * @author nuwan
+ * @author Sachintha
  */
 public class Main extends javax.swing.JFrame {
 

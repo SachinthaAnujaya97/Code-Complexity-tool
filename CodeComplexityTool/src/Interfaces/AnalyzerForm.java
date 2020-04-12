@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author nuwan
+ * @author Sachintha
  */
 public class AnalyzerForm extends javax.swing.JFrame {
 
