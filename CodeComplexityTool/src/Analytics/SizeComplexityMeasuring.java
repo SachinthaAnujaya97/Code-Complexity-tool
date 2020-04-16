@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author nuwan
+ * @author Rahal sandeepa
  */
 
 public class SizeComplexityMeasuring {

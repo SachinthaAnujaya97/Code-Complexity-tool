@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
 
 /**
  *
- * @author nuwan
+ * @author Rahal sandeepa
  */
 public class VariableComplexity {
     
