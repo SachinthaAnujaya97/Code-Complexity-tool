@@ -90,7 +90,7 @@ public class AnalyzerForm extends javax.swing.JFrame {
         
         Cs=(Wkw*Nkw)+(Wid*Nid)+(Wop*Nop)+(Wnv*Nnv)+(Wsl*Nsl);
         CsLabelValue.setText(Integer.toString(Cs));
-        SizeLabel.setText(Integer.toString(Cs));
+        
     }
     
     public void getVariableAnalyze(int value)
@@ -98,10 +98,10 @@ public class AnalyzerForm extends javax.swing.JFrame {
         KeyWordAnalyzerLabel.setText(Integer.toString(value));
     }
     
-    public void getInheritanceAnalyzer(int value)
+    /*public void getInheritanceAnalyzer(int value)
     {
         InheritanceLabel.setText(Integer.toString(value));
-    }
+    }*/
     
     public void getMethodComplexity(String filepath) throws FileNotFoundException, IOException
     {
@@ -185,14 +185,10 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         ComplexityLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         KeyWordAnalyzerLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        InheritanceLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        SizeLabel = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -272,17 +268,9 @@ public class AnalyzerForm extends javax.swing.JFrame {
         jLabel1.setText("Analyzer Form");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Number of Inheritance :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
-
         ComplexityLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         ComplexityLabel.setText("--");
         getContentPane().add(ComplexityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setText("Size Complexity :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, -1, -1));
 
         KeyWordAnalyzerLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         KeyWordAnalyzerLabel.setText("--");
@@ -292,17 +280,9 @@ public class AnalyzerForm extends javax.swing.JFrame {
         jLabel4.setText("Code Complexity :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
 
-        InheritanceLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        InheritanceLabel.setText("--");
-        getContentPane().add(InheritanceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Key-Word Usage :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
-
-        SizeLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        SizeLabel.setText("--");
-        getContentPane().add(SizeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, -1, -1));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -578,7 +558,6 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private javax.swing.JTextArea CsMethodsTextView;
     private javax.swing.JTextArea CsVariableView;
     private javax.swing.JLabel CvLabel;
-    private javax.swing.JLabel InheritanceLabel;
     private javax.swing.JLabel KeyWordAnalyzerLabel;
     private javax.swing.JLabel NCLabel;
     private javax.swing.JLabel NcdtpLabel;
@@ -590,7 +569,6 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private javax.swing.JLabel NpdtpLabel;
     private javax.swing.JLabel NpdtvLabel;
     private javax.swing.JLabel NslLabel;
-    private javax.swing.JLabel SizeLabel;
     private javax.swing.JLabel WcdtpLabel;
     private javax.swing.JLabel WcdtvLabel;
     private javax.swing.JLabel WidLabel;
@@ -614,7 +592,6 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -625,7 +602,6 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;

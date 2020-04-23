@@ -280,7 +280,7 @@ public class Main extends javax.swing.JFrame {
         
         
         //Calculating Inheritance
-        anzf.getInheritanceAnalyzer(ctrl.InheritanceAnalyzer(ctrl.getStrArr()));
+        //anzf.getInheritanceAnalyzer(ctrl.InheritanceAnalyzer(ctrl.getStrArr()));
         
         try {
             anzf.getVariableComplexity(ctrl.getStrArr(),filepath);
