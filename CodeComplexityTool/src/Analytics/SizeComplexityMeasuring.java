@@ -41,7 +41,7 @@ public class SizeComplexityMeasuring {
     String [] keywordArray = ctl.getKeywords();
     String [] OperatorArray = ctl.getLogical();
     
-    // Size complexity initializer
+    
     public ArrayList<String> SizeComplexityInitializer(String filepath) throws IOException, Exception
     {
         FileReader read = new FileReader(filepath);
