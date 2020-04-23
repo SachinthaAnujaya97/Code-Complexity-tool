@@ -170,6 +170,8 @@ public class Controller {
         this.options = options;
     }
     
+    // Analyzers
+    
     public int CodeAnalyzer(String [] str)
     {
         int complexity=0;
