@@ -58,7 +58,8 @@ public class ControlComplexity {
             for (String controlStruct : controlStructs) 
             {
                 if(word.equals(controlStruct))
-                {
+                {   
+                    //Count if else statement and total
                     if((word.equals("if"))||(word.equals("else")))
                     {
                         if(Wtcs!=0)
