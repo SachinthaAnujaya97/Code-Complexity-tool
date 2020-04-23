@@ -12,6 +12,8 @@ import java.util.StringTokenizer;
  *
  * @author Tharaki
  */
+
+// Create class 
 public class Controller {
     
     String[] strArr;
