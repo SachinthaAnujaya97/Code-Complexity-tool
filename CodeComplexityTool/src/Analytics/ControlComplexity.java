@@ -46,7 +46,7 @@ public class ControlComplexity {
         
         return returnValues;
     }
-    
+    //Methode implement
     public void findToken(String CurrentLine, int i)
     {
         StringTokenizer token = new StringTokenizer(CurrentLine);
@@ -69,6 +69,7 @@ public class ControlComplexity {
                         Wtcs = Wtcs + 2;
                         NC++;
                     }
+                    //count for ,while and do statement
                     else if((word.equals("for"))||(word.equals("while"))||(word.equals("do")))
                     {
                         if(Wtcs!=0)
