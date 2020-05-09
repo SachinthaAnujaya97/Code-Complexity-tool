@@ -10,10 +10,8 @@ import java.util.StringTokenizer;
 
 /**
  *
- * @author Tharaki
+ * @author Tharaki Kulathunga
  */
-
-// Create class 
 public class Controller {
     
     String[] strArr;
@@ -172,8 +170,6 @@ public class Controller {
         this.options = options;
     }
     
-    // Analyzers
-    
     public int CodeAnalyzer(String [] str)
     {
         int complexity=0;
@@ -181,7 +177,6 @@ public class Controller {
         for (int i = 0; i < options.length; i++) 
         {
             String[] array = options[i];
-            System.out.println(strArr.length);
             for (int j = 0; j < strArr.length; j++)
             {
                 for (int k = 0; k < array.length; k++)
@@ -258,5 +253,35 @@ public class Controller {
         return inheritanceCount;
         
         
+    }
+    
+    public int CPPInheritanceAnalyzer(String [] str)
+    {
+        int inheritanceCount = 0;
+        
+        for(int i=0; i<str.length; i++)
+        {
+            lst.add(str[i]);
+        }
+        
+        for(String line : lst)
+        {
+            words = line.split(" ");
+            
+            StringTokenizer token = new StringTokenizer(line);
+            
+            while(token.hasMoreTokens())
+            {
+                String previostoken = null;
+                
+                if(token.nextToken().equals(":"))
+                {
+                    previostoken = token.nextToken();
+                    inheritanceCount++;
+                }
+            }
+        }
+        
+        return inheritanceCount;
     }
 }

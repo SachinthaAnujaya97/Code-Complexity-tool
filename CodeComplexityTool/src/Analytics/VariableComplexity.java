@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
 
 /**
  *
- * @author Rahal sandeepa
+ * @author Rahal Sandeepa
  */
 public class VariableComplexity {
     
@@ -88,6 +88,56 @@ public class VariableComplexity {
         
         return returnValues;
         
+    }
+    
+    public ArrayList<String> VariableComplexityInitializerCPP(String [] str)
+    {
+        String [] words;
+        String regex = "\\\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,4}\\\\b";
+        for(int i=0; i<str.length; i++)
+        {
+            String sentence = str[i];
+            words = sentence.split(" ");
+            
+            for(int j = 0; j<words.length; j++)
+            {
+                for(int k = 0; k < primitiveDataTypes.length; k++)
+                {
+                    if(words[j].equals(primitiveDataTypes[k]))
+                    {
+                        //if((words[j+2].equals(regex)))
+                        //{
+                            Wvs++;
+                            Wpdtv++;
+                            Npdtv++;
+                        //}
+                    }
+                    else if((words[j] == null ? primitiveDataTypes[k] != null : !words[j].equals(primitiveDataTypes[k]))&&(!regex.equals(words[j])))
+                    {
+                        for( int ig = 0; ig < ignoreElements.length; ig++ )
+                        {
+                            if(words[j].equals(ignoreElements[ig]))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Wcdtv = Wcdtv + 2;
+                                Ncdtv++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        returnValues.add(Integer.toString(Wvs));
+        returnValues.add(Integer.toString(Wpdtv));
+        returnValues.add(Integer.toString(Npdtv));
+        returnValues.add(Integer.toString(Wcdtv));
+        returnValues.add(Integer.toString(Ncdtv));
+        
+        return returnValues;
     }
     
     

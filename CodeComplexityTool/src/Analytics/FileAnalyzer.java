@@ -11,9 +11,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-//This class For controlStructure,inheritance and size,variable,methods
-
-
+/**
+ *
+ * @author Lasan 
+ */
 public class FileAnalyzer {
     
     public int NumberOfLines;

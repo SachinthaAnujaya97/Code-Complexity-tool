@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 
 /**
  *
- * @author Rahal Sandeep
+ * @author Rahal Sandeepa
  */
 public class MethodComplexity {
     
@@ -35,6 +35,29 @@ public class MethodComplexity {
     int Cm,Wmrt,Wpdtp,Npdtp,Wcdtp,Ncdtp;
     
     public ArrayList<String> MethodComplexityInitializer(String filepath) throws FileNotFoundException, IOException
+    {
+        FileReader read = new FileReader(filepath);
+        BufferedReader br = new BufferedReader(read);
+        String CurrentLine , line;
+        
+        while((line = br.readLine())!= null)
+                {
+                    
+                    CurrentLine=line;
+//                    
+                    findToken(CurrentLine,1);
+//                    
+                }
+        returnValues.add(Integer.toString(Wmrt));
+        returnValues.add(Integer.toString(Wpdtp));
+        returnValues.add(Integer.toString(Npdtp));
+        returnValues.add(Integer.toString(Wcdtp));
+        returnValues.add(Integer.toString(Ncdtp));
+        
+        return returnValues;
+    }
+    
+    public ArrayList<String> MethodComplexityInitializerCPP(String filepath) throws FileNotFoundException, IOException
     {
         FileReader read = new FileReader(filepath);
         BufferedReader br = new BufferedReader(read);
@@ -87,4 +110,5 @@ public class MethodComplexity {
             }
         }
     }
+    
 }

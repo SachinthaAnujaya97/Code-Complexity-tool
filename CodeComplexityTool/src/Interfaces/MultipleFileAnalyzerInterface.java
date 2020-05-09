@@ -5,436 +5,18 @@
  */
 package Interfaces;
 
-import Analytics.ControlComplexity;
-import Analytics.Controller;
-import Analytics.FileAnalyzer;
-import Analytics.MethodComplexity;
-import Analytics.SizeComplexityMeasuring;
-import Analytics.VariableComplexity;
-import static Interfaces.Main.filepath;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /**
  *
  * @author Sachintha
  */
-public class AnalyzerForm extends javax.swing.JFrame {
+public class MultipleFileAnalyzerInterface extends javax.swing.JFrame {
 
     /**
-     * Creates new form AnalyzerForm
+     * Creates new form MultipleFileAnalyzerInterface
      */
-    SizeComplexityMeasuring scm = new SizeComplexityMeasuring();
-    MethodComplexity mcm = new MethodComplexity();
-    VariableComplexity vcm = new VariableComplexity();
-    ControlComplexity Ccm = new ControlComplexity();
-    
-    ArrayList<String> SizeComplexityList = new ArrayList<>();
-    ArrayList<String> MethodComplexityList = new ArrayList<>();
-    ArrayList<String> VariableComplexityList = new ArrayList<>();
-    ArrayList<String> ControlComplexityLst = new ArrayList<>();
-    
-    int Cc = 0;
-    int Kwc = 0;
-    int Cs=0,Wkw=0,Nkw=0,Wid=0,Nid=0,Wop=0,Nop=0,Wnv=0,Nnv=0,Wsl=0,Nsl=0;
-    int Cm=0,Wmrt=0,Wpdtp=0,Npdtp=0,Wcdtp=0,Ncdtp=0;
-    int Cv=0,Wvs=0,Wpdtv=0,Npdtv=0,Wcdtv=0,Ncdtv=0;
-    int Ci=0;
-    int Ccs=0,Wtcs=0,NC=0,Ccspps=0;
-    int Ccp=0,Wr=0,Nr=0,Wmcms=0,Nmcms=0,Wmcmd=0,Nmcmd=0,Wmcrms=0,Nmcrms=0,Wmcrmd=0,Nmcrmd=0,Wrmcrms=0,Nrmcrms=0,Wrmcrmd=0,Nrmcrmd=0,Wrmcms=0,Nrmcms=0,Wrmcmd=0,
-            Nrmcmd=0,Wmrgvs=0,Nmrgvs=0,Wmrgvd=0,Nmrgvd=0,Wrmrgvs=0,Nrmrgvs=0,Wrmrgvd=0,Nrmrgvd=0;
-    int TCps=0;
-    
-    public AnalyzerForm() {
+    public MultipleFileAnalyzerInterface() {
         initComponents();
         setSize(1350,850);
-    }
-    
-    public void getInheritanceCode(String filepath) throws FileNotFoundException, IOException
-    {
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        InheritanceView.read(br, null);
-        InheritanceView.requestFocus();
-    }
-    
-    public void getCouplingCode(String filepath) throws FileNotFoundException, IOException
-    {
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        
-        CouplingView.read(br, null);
-        CouplingView.requestFocus();
-        
-        
-    }
-    
-    public void getCouplingResults(ArrayList<String> lst)
-    {
-            
-            Wr = Integer.parseInt(lst.get(0));
-            Nr = Integer.parseInt(lst.get(1));
-            Wmcms = Integer.parseInt(lst.get(2));
-            Nmcms = Integer.parseInt(lst.get(3));
-            Wmcmd = Integer.parseInt(lst.get(4));
-            Nmcmd = Integer.parseInt(lst.get(5));
-            Wmcrms = Integer.parseInt(lst.get(6));
-            Nmcrms = Integer.parseInt(lst.get(7));
-            Wmcrmd = Integer.parseInt(lst.get(8));
-            Nmcrmd = Integer.parseInt(lst.get(9));
-            Wrmcrms = Integer.parseInt(lst.get(10));
-            Nrmcrms = Integer.parseInt(lst.get(11));
-            Wrmcrmd = Integer.parseInt(lst.get(12));
-            Nrmcrmd = Integer.parseInt(lst.get(13));
-            Wrmcms = Integer.parseInt(lst.get(14));
-            Nrmcms = Integer.parseInt(lst.get(15));
-            Wrmcmd = Integer.parseInt(lst.get(16));
-            Nrmcmd = Integer.parseInt(lst.get(17));
-            Wmrgvs = Integer.parseInt(lst.get(18));
-            Nmrgvs = Integer.parseInt(lst.get(19));
-            Wmrgvd = Integer.parseInt(lst.get(20));
-            Nmrgvd = Integer.parseInt(lst.get(21));
-            Wrmrgvs = Integer.parseInt(lst.get(22));
-            Nrmrgvs = Integer.parseInt(lst.get(23));
-            Wrmrgvd = Integer.parseInt(lst.get(24));
-            Nrmrgvd = Integer.parseInt(lst.get(25));
-            
-            Wrlabel.setText(Integer.toString(Wr));
-            NrLabel.setText(Integer.toString(Nr));
-            WmcmsLabel.setText(Integer.toString(Wmcms));
-            NmcmsLabel.setText(Integer.toString(Nmcms));
-            WmcmdLabel.setText(Integer.toString(Wmcmd));
-            NmcmdLabel.setText(Integer.toString(Nmcmd));
-            WmcrmsLabel.setText(Integer.toString(Wmcrms));
-            NmcrmsLabel.setText(Integer.toString(Nmcrms));
-            WmcrmdLabel.setText(Integer.toString(Wmcrmd));
-            NmcrmdLabel.setText(Integer.toString(Nmcrmd));
-            WrmcrmsLabel.setText(Integer.toString(Wrmcrms));
-            NrmcrmsLabel.setText(Integer.toString(Nrmcrms));
-            WrmcrmdLabel.setText(Integer.toString(Wrmcrmd));
-            NrmcrmdLabel.setText(Integer.toString(Nrmcrmd));
-            WrmcmsLabel.setText(Integer.toString(Wrmcms));
-            NrmcmsLabel.setText(Integer.toString(Nrmcms));
-            WrmcmdLabel.setText(Integer.toString(Wrmcmd));
-            NrmcmdLabel.setText(Integer.toString(Nrmcmd));
-            WmrgvsLabel.setText(Integer.toString(Wmrgvs));
-            NmrgvsLabel.setText(Integer.toString(Nmrgvs));
-            WmrgvdLabel.setText(Integer.toString(Wmrgvd));
-            NmrgvdLabel.setText(Integer.toString(Nmrgvd));
-            WrmrgvsLabel.setText(Integer.toString(Wrmrgvs));
-            NrmrgvsLabel.setText(Integer.toString(Nrmrgvs));
-            WrmrgvdLabel.setText(Integer.toString(Wrmrgvd));
-            NrmrgvdLabel.setText(Integer.toString(Nrmrgvd));
-            
-            Ccp = (Wr * Nr) + (Wmcms * Nmcms) + (Wmcmd * Nmcmd) + (Wmcrms * Nmcrms) + (Wmcrmd * Nmcrmd) + 
-                    (Wrmcrms * Nrmcrms) + (Wrmcrmd *Nrmcrmd) + (Wrmcms * Nrmcms) + (Wrmcmd * Nrmcmd) +  
-                    (Wmrgvs *Nmrgvs) + (Wmrgvd * Nmrgvd) + (Wrmrgvs * Nrmrgvs) + (Wrmrgvd * Nrmrgvd);
-            TCps = TCps + Ccp;
-            CcpValue.setText(Integer.toString(Ccp));
-    }
-    
-    public void CheckBoxValidation(boolean svmcheck, boolean inheritcheck, boolean couplingcheck, boolean structurecheck)
-    {
-        if(svmcheck == true)
-        {
-            analyzerTab.setEnabledAt(0, true);
-            analyzerTab.setEnabledAt(1, true);
-            analyzerTab.setEnabledAt(2, true);
-        }
-        else if(svmcheck == false)
-        {
-            analyzerTab.setEnabledAt(0, false);
-            analyzerTab.setEnabledAt(1, false);
-            analyzerTab.setEnabledAt(2, false);
-        }
-        
-        if(inheritcheck == true)
-        {
-            analyzerTab.setEnabledAt(4, true);
-        }
-        else if(inheritcheck == false)
-        {
-            analyzerTab.setEnabledAt(4, false);
-        }
-        
-        if(couplingcheck == true)
-        {
-            analyzerTab.setEnabledAt(5, true);
-        }
-        else if(couplingcheck == false)
-        {
-            analyzerTab.setEnabledAt(5, false);
-        }
-        
-        if(structurecheck == true)
-        {
-            analyzerTab.setEnabledAt(3, true);
-        }
-        else if(structurecheck == false)
-        {
-            analyzerTab.setEnabledAt(3, false);
-        }
-    }
-    
-    public void getDetails(int value)
-    {
-        Cc = value;
-        TCps = TCps + Cc;
-        ComplexityLabel.setText(Integer.toString(value));
-    }
-    
-    public void getCodeText(String filepath) throws IOException
-    {
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        sizeTextView.read(br, null);
-        sizeTextView.requestFocus();
-    }
-    
-    public void getSizeComplexity(String filepath) throws Exception
-    {
-        //SizeLabel.setText(Integer.toString(scm.SizeComplexityInitializer(br)));
-        SizeComplexityList = scm.SizeComplexityInitializer(filepath);
-        
-        Wkw = Integer.parseInt(SizeComplexityList.get(0));
-        Nkw = Integer.parseInt(SizeComplexityList.get(1));
-        Wid = Integer.parseInt(SizeComplexityList.get(2));
-        Nid = Integer.parseInt(SizeComplexityList.get(3));
-        Wop = Integer.parseInt(SizeComplexityList.get(4));
-        Nop = Integer.parseInt(SizeComplexityList.get(5));
-        Wnv = Integer.parseInt(SizeComplexityList.get(6));
-        Nnv = Integer.parseInt(SizeComplexityList.get(7));
-        Wsl = Integer.parseInt(SizeComplexityList.get(8));
-        Nsl = Integer.parseInt(SizeComplexityList.get(9));
-        
-        WkwLabel.setText(Integer.toString(Wkw));
-        NkwLabel.setText(Integer.toString(Nkw));
-        WidLabel.setText(Integer.toString(Wid));
-        NidLabel.setText(Integer.toString(Nid));
-        WopLabel.setText(Integer.toString(Wop));
-        NopLabel.setText(Integer.toString(Nop));
-        WnvLabel.setText(Integer.toString(Wnv));
-        NnvLabel.setText(Integer.toString(Nnv));
-        WslLabel.setText(Integer.toString(Wsl));
-        NslLabel.setText(Integer.toString(Nsl));
-        
-        Cs=(Wkw*Nkw)+(Wid*Nid)+(Wop*Nop)+(Wnv*Nnv)+(Wsl*Nsl);
-        TCps = TCps + Cs;
-        CsLabelValue.setText(Integer.toString(Cs));
-        
-    }
-    
-    public void getCPPSizeComplexity(String filepath) throws Exception
-    {
-        SizeComplexityList = scm.SizeComplexityInitializerCPP(filepath);
-        
-        Wkw = Integer.parseInt(SizeComplexityList.get(0));
-        Nkw = Integer.parseInt(SizeComplexityList.get(1));
-        Wid = Integer.parseInt(SizeComplexityList.get(2));
-        Nid = Integer.parseInt(SizeComplexityList.get(3));
-        Wop = Integer.parseInt(SizeComplexityList.get(4));
-        Nop = Integer.parseInt(SizeComplexityList.get(5));
-        Wnv = Integer.parseInt(SizeComplexityList.get(6));
-        Nnv = Integer.parseInt(SizeComplexityList.get(7));
-        Wsl = Integer.parseInt(SizeComplexityList.get(8));
-        Nsl = Integer.parseInt(SizeComplexityList.get(9));
-        
-        WkwLabel.setText(Integer.toString(Wkw));
-        NkwLabel.setText(Integer.toString(Nkw));
-        WidLabel.setText(Integer.toString(Wid));
-        NidLabel.setText(Integer.toString(Nid));
-        WopLabel.setText(Integer.toString(Wop));
-        NopLabel.setText(Integer.toString(Nop));
-        WnvLabel.setText(Integer.toString(Wnv));
-        NnvLabel.setText(Integer.toString(Nnv));
-        WslLabel.setText(Integer.toString(Wsl));
-        NslLabel.setText(Integer.toString(Nsl));
-        
-        Cs=(Wkw*Nkw)+(Wid*Nid)+(Wop*Nop)+(Wnv*Nnv)+(Wsl*Nsl);
-        TCps = TCps + Cs;
-        CsLabelValue.setText(Integer.toString(Cs));
-        
-    }
-    
-    public void getVariableAnalyze(int value)
-    {
-        Kwc = value;
-        KeyWordAnalyzerLabel.setText(Integer.toString(value));
-    }
-    
-    public void getInheritanceAnalyzer(int value)
-    {
-        Ci = value;
-        TCps = TCps + Ci;
-        CiValue.setText(Integer.toString(value));
-    }
-    
-    public void getMethodComplexity(String filepath) throws FileNotFoundException, IOException
-    {
-        MethodComplexityList = mcm.MethodComplexityInitializer(filepath);
-        
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        CsMethodsTextView.read(br, null);
-        CsMethodsTextView.requestFocus();
-        
-        Wmrt = Integer.parseInt(MethodComplexityList.get(0));
-        Wpdtp = Integer.parseInt(MethodComplexityList.get(1));
-        Npdtp = Integer.parseInt(MethodComplexityList.get(2));
-        Wcdtp = Integer.parseInt(MethodComplexityList.get(3));
-        Ncdtp = Integer.parseInt(MethodComplexityList.get(4));
-        
-        WmrtLabel.setText(Integer.toString(Wmrt));
-        WpdtpLabel.setText(Integer.toString(Wpdtp));
-        NpdtpLabel.setText(Integer.toString(Npdtp));
-        WcdtpLabel.setText(Integer.toString(Wcdtp));
-        NcdtpLabel.setText(Integer.toString(Ncdtp));
-        
-        Cm = Wmrt + (Wpdtp * Npdtp) + (Wcdtp * Ncdtp);
-        TCps = TCps + Cm;
-        CmLabel.setText(Integer.toString(Cm));
-        
-    }
-    
-    public void getCPPMethodComplexity(String filepath) throws FileNotFoundException, IOException
-    {
-        MethodComplexityList = mcm.MethodComplexityInitializerCPP(filepath);
-        
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        CsMethodsTextView.read(br, null);
-        CsMethodsTextView.requestFocus();
-        
-        Wmrt = Integer.parseInt(MethodComplexityList.get(0));
-        Wpdtp = Integer.parseInt(MethodComplexityList.get(1));
-        Npdtp = Integer.parseInt(MethodComplexityList.get(2));
-        Wcdtp = Integer.parseInt(MethodComplexityList.get(3));
-        Ncdtp = Integer.parseInt(MethodComplexityList.get(4));
-        
-        WmrtLabel.setText(Integer.toString(Wmrt));
-        WpdtpLabel.setText(Integer.toString(Wpdtp));
-        NpdtpLabel.setText(Integer.toString(Npdtp));
-        WcdtpLabel.setText(Integer.toString(Wcdtp));
-        NcdtpLabel.setText(Integer.toString(Ncdtp));
-        
-        Cm = Wmrt + (Wpdtp * Npdtp) + (Wcdtp * Ncdtp);
-        TCps = TCps + Cm;
-        CmLabel.setText(Integer.toString(Cm));
-    }
-    
-    public void getVariableComplexity(String [] str, String filepath) throws FileNotFoundException, IOException
-    {
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        CsVariableView.read(br, null);
-        CsVariableView.requestFocus();
-        
-        VariableComplexityList = vcm.VariableComplexityInitializer(str);
-        
-        Wvs = Integer.parseInt(VariableComplexityList.get(0));
-        Wpdtv = Integer.parseInt(VariableComplexityList.get(1));
-        Npdtv = Integer.parseInt(VariableComplexityList.get(2));
-        Wcdtv = Integer.parseInt(VariableComplexityList.get(3));
-        Ncdtv = Integer.parseInt(VariableComplexityList.get(4));
-        
-        WvsLabel.setText(Integer.toString(Wvs));
-        WpdtvLabel.setText(Integer.toString(Wpdtv));
-        NpdtvLabel.setText(Integer.toString(Npdtv));
-        WcdtvLabel.setText(Integer.toString(Wcdtv));
-        NcdtvLabel.setText(Integer.toString(Ncdtv));
-        
-        Cv = Wvs * ((Wpdtv * Npdtv) + (Wcdtv * Ncdtv));
-        TCps = TCps + Cv;
-        CvLabel.setText(Integer.toString(Cv));
-    }
-    
-    public void getCPPVariableComplexity(String [] str, String filepath) throws FileNotFoundException, IOException
-    {
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        CsVariableView.read(br, null);
-        CsVariableView.requestFocus();
-        
-        VariableComplexityList = vcm.VariableComplexityInitializerCPP(str);
-        
-        Wvs = Integer.parseInt(VariableComplexityList.get(0));
-        Wpdtv = Integer.parseInt(VariableComplexityList.get(1));
-        Npdtv = Integer.parseInt(VariableComplexityList.get(2));
-        Wcdtv = Integer.parseInt(VariableComplexityList.get(3));
-        Ncdtv = Integer.parseInt(VariableComplexityList.get(4));
-        
-        WvsLabel.setText(Integer.toString(Wvs));
-        WpdtvLabel.setText(Integer.toString(Wpdtv));
-        NpdtvLabel.setText(Integer.toString(Npdtv));
-        WcdtvLabel.setText(Integer.toString(Wcdtv));
-        NcdtvLabel.setText(Integer.toString(Ncdtv));
-        
-        Cv = Wvs * ((Wpdtv * Npdtv) + (Wcdtv * Ncdtv));
-        TCps = TCps + Cv;
-        CvLabel.setText(Integer.toString(Cv));
-        
-    }
-    
-    public void getControlStructureConplexity(String filepath) throws FileNotFoundException, IOException
-    {
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        CcSVariableView.read(br, null);
-        CcSVariableView.requestFocus();
-        
-        ControlComplexityLst = Ccm.ControlComplexityInitializer(filepath);
-        
-        Wtcs = Integer.parseInt(ControlComplexityLst.get(0));
-        NC = Integer.parseInt(ControlComplexityLst.get(1));
-        Ccspps = Integer.parseInt(ControlComplexityLst.get(2));
-        
-        WtcsLabel.setText(Integer.toString(Wtcs));
-        NCLabel.setText(Integer.toString(NC));
-        CcsppsLabel.setText(Integer.toString(Ccspps));
-        
-        Ccs = (Wtcs * NC) + Ccspps;
-        TCps = TCps + Ccs;
-        CcsLabel.setText(Integer.toString(Ccs));
-        System.out.println("multiple complex");
-    }
-    
-    public void getCPPControlStructureConplexity(String filepath) throws FileNotFoundException, IOException
-    {
-        FileReader read = new FileReader(filepath);
-        BufferedReader br = new BufferedReader(read);
-        CcSVariableView.read(br, null);
-        CcSVariableView.requestFocus();
-        
-        ControlComplexityLst = Ccm.ControlComplexityInitializerCPP(filepath);
-        
-        Wtcs = Integer.parseInt(ControlComplexityLst.get(0));
-        NC = Integer.parseInt(ControlComplexityLst.get(1));
-        Ccspps = Integer.parseInt(ControlComplexityLst.get(2));
-        
-        WtcsLabel.setText(Integer.toString(Wtcs));
-        NCLabel.setText(Integer.toString(NC));
-        CcsppsLabel.setText(Integer.toString(Ccspps));
-        
-        Ccs = (Wtcs * NC) + Ccspps;
-        CcsLabel.setText(Integer.toString(Ccs));
-        TCps = TCps + Ccs;
-    }
-    
-    public long getFinalResult()
-    {
-        System.out.println(Cs);
-        System.out.println(Cv);
-        System.out.println(Cm);
-        System.out.println(Ci);
-        System.out.println(Ccp);
-        System.out.println(Ccs);
-        TCps = Cs + Cv + Cm + Ci + Ccp + Ccs;
-        System.out.println(TCps);
-        return TCps;
     }
 
     /**
@@ -447,10 +29,9 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        ComplexityLabel = new javax.swing.JLabel();
-        KeyWordAnalyzerLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        finalresultbutton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        KeyWordAnalyzerLabel = new javax.swing.JLabel();
         analyzerTab = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -590,30 +171,32 @@ public class AnalyzerForm extends javax.swing.JFrame {
         NrmrgvdLabel = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
         CcpValue = new javax.swing.JLabel();
-        finalresultbutton = new javax.swing.JButton();
+        ComplexityLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Analyzer Form");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
-        ComplexityLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        ComplexityLabel.setText("--");
-        getContentPane().add(ComplexityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
-
-        KeyWordAnalyzerLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        KeyWordAnalyzerLabel.setText("--");
-        getContentPane().add(KeyWordAnalyzerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 190, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("Code Complexity :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
+        finalresultbutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        finalresultbutton.setText("Final Result");
+        finalresultbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalresultbuttonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(finalresultbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 150, 50));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Key-Word Usage :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, -1, -1));
+
+        KeyWordAnalyzerLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        KeyWordAnalyzerLabel.setText("--");
+        getContentPane().add(KeyWordAnalyzerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 190, -1, -1));
 
         analyzerTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         analyzerTab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1052,14 +635,13 @@ public class AnalyzerForm extends javax.swing.JFrame {
 
         getContentPane().add(analyzerTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 970, 390));
 
-        finalresultbutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        finalresultbutton.setText("Final Result");
-        finalresultbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finalresultbuttonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(finalresultbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 150, 50));
+        ComplexityLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ComplexityLabel.setText("--");
+        getContentPane().add(ComplexityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setText("Code Complexity :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1068,10 +650,10 @@ public class AnalyzerForm extends javax.swing.JFrame {
 
         //long temp = getFinalResult();
         TotalComplexity ttcmpl = new TotalComplexity();
-        ttcmpl.SetValues(Cc, Wkw, Cs, Cm, Cv, Ci, Ccs, Ccp, TCps);
+        //ttcmpl.SetValues(Cc, Wkw, Cs, Cm, Cv, Ci, Ccs, Ccp, TCps);
         ttcmpl.setLocationRelativeTo(null);
         ttcmpl.setVisible(true);
-        
+
     }//GEN-LAST:event_finalresultbuttonActionPerformed
 
     /**
@@ -1091,20 +673,20 @@ public class AnalyzerForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AnalyzerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MultipleFileAnalyzerInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AnalyzerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MultipleFileAnalyzerInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AnalyzerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MultipleFileAnalyzerInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AnalyzerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MultipleFileAnalyzerInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AnalyzerForm().setVisible(true);
+                new MultipleFileAnalyzerInterface().setVisible(true);
             }
         });
     }

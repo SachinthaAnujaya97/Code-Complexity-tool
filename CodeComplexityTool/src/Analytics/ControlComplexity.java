@@ -46,7 +46,27 @@ public class ControlComplexity {
         
         return returnValues;
     }
-    //Methode implement
+    
+    public ArrayList<String> ControlComplexityInitializerCPP(String filepath) throws FileNotFoundException, IOException
+    {
+        FileReader read = new FileReader(filepath);
+        BufferedReader br = new BufferedReader(read);
+        String CurrentLine , line;
+        
+        while((line = br.readLine())!= null)
+                {
+                    
+                    CurrentLine=line;                   
+                    findToken(CurrentLine,1);
+                    
+                }
+        returnValues.add(Integer.toString(Wtcs));
+        returnValues.add(Integer.toString(NC));
+        returnValues.add(Integer.toString(Ccspps));
+        
+        return returnValues;
+    }
+    
     public void findToken(String CurrentLine, int i)
     {
         StringTokenizer token = new StringTokenizer(CurrentLine);
@@ -58,8 +78,7 @@ public class ControlComplexity {
             for (String controlStruct : controlStructs) 
             {
                 if(word.equals(controlStruct))
-                {   
-                    //Count if else statement and total
+                {
                     if((word.equals("if"))||(word.equals("else")))
                     {
                         if(Wtcs!=0)
@@ -69,7 +88,6 @@ public class ControlComplexity {
                         Wtcs = Wtcs + 2;
                         NC++;
                     }
-                    //count for ,while and do statement
                     else if((word.equals("for"))||(word.equals("while"))||(word.equals("do")))
                     {
                         if(Wtcs!=0)

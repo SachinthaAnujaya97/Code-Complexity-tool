@@ -11,8 +11,6 @@ import Coupling.Coupling;
 import Coupling.CouplingMain;
 import Coupling.CustomFile;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import static jdk.nashorn.internal.parser.TokenType.EOF;
 
 /**
  *
@@ -31,15 +30,20 @@ import javax.swing.JOptionPane;
 public class Main extends javax.swing.JFrame {
 
     public static String filepath;
-    ArrayList <CustomFile> fileList = new ArrayList<>();
+    ArrayList <CustomFile> fileList = new ArrayList<CustomFile>();
+    ArrayList <String> couplingResults = new ArrayList<>();
     public FileAnalyzer analit = new FileAnalyzer();
     Controller ctrl = new Controller();
     AnalyzerForm anzf = new AnalyzerForm();
-    CouplingMain cpMain;
+    CouplingMain cpMain = new CouplingMain();
     FileReader read;
     BufferedReader br;
     File fl;
     Coupling cp;
+    String filetype;
+    CustomFile csFile1;
+    CustomFile csFile2;
+    boolean svmcheck,inheritcheck,couplingcheck,structurecheck;
             
     /**
      * Creates new form Main
@@ -91,16 +95,16 @@ public class Main extends javax.swing.JFrame {
                 FileBrowseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(FileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, -1, -1));
+        getContentPane().add(FileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Select the Java file for evaluation");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
 
         selectedPathField.setEditable(false);
         selectedPathField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         selectedPathField.setText("Selected Fiile Path");
-        getContentPane().add(selectedPathField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 770, -1));
+        getContentPane().add(selectedPathField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 770, -1));
 
         filNameField.setEditable(false);
         filNameField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -109,25 +113,25 @@ public class Main extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Selected File Type :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
 
         FileTypeLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         FileTypeLabel.setText("--");
-        getContentPane().add(FileTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+        getContentPane().add(FileTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
         CodeViewer.setColumns(20);
         CodeViewer.setRows(5);
         jScrollPane1.setViewportView(CodeViewer);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 770, 330));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 770, 330));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Number of Lines :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, -1, 40));
 
         NumOfLines.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         NumOfLines.setText("--");
-        getContentPane().add(NumOfLines, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 270, -1, -1));
+        getContentPane().add(NumOfLines, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 280, -1, -1));
 
         AnalyzeButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         AnalyzeButton.setText("Analyze");
@@ -144,23 +148,23 @@ public class Main extends javax.swing.JFrame {
                 AnalyzeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AnalyzeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 660, -1, -1));
+        getContentPane().add(AnalyzeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 710, -1, -1));
 
         svmCheckBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         svmCheckBox.setText("Size , Variables and Method");
-        getContentPane().add(svmCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 660, -1, -1));
+        getContentPane().add(svmCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 670, -1, -1));
 
         InheritanceCheckBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         InheritanceCheckBox.setText("Inheritance");
-        getContentPane().add(InheritanceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 660, -1, -1));
+        getContentPane().add(InheritanceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 670, -1, -1));
 
         CouplingCheckBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         CouplingCheckBox.setText("Coupling");
-        getContentPane().add(CouplingCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 710, -1, -1));
+        getContentPane().add(CouplingCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 720, -1, -1));
 
         ControlStructureCheckBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         ControlStructureCheckBox.setText("Control Structures");
-        getContentPane().add(ControlStructureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 710, -1, -1));
+        getContentPane().add(ControlStructureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 720, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,10 +187,12 @@ public class Main extends javax.swing.JFrame {
         //Deciding whether if it is a Java file or C++ file
         if(filepath.toLowerCase().endsWith(".java"))
         {
+            filetype = "java";
             FileTypeLabel.setText("Java");
         }
         else if(filepath.toLowerCase().endsWith(".cpp"))
         {
+            filetype = "cpp";
             FileTypeLabel.setText("C++");
         }
         
@@ -216,15 +222,7 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         
-        //Control Structure Complexity
-        try
-        {
-            anzf.getControlStructureConplexity(filepath);
-        }
-        catch(IOException ex)
-        {
-            JOptionPane.showMessageDialog(null, ex);
-        }
+        
        
        
     }//GEN-LAST:event_FileBrowseButtonActionPerformed
@@ -241,16 +239,77 @@ public class Main extends javax.swing.JFrame {
 
     private void AnalyzeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalyzeButtonActionPerformed
 
-        //Adding the code to arraylist
+        if(filetype.equals("java"))
+        {
+            //Adding the code to arraylist
         ctrl.setStrArr(CodeViewer.getText().split("\\n"));
         
-        String filename = fl.getName();
-        CustomFile csFile = new CustomFile(filename);
-        csFile.setFileName(filename);
-        csFile.setFilePath(filepath);
-        fileList.add(csFile);
+        //CheckBox Validation
+        if(svmCheckBox.isSelected())
+        {
+            svmcheck = true;
+        }
+        else if(!(svmCheckBox.isSelected()))
+        {
+            svmcheck = false;
+        }
         
+        if(InheritanceCheckBox.isSelected())
+        {
+            inheritcheck = true;
+        }
+        else if(!(InheritanceCheckBox.isSelected()))
+        {
+            inheritcheck = false;
+        }
         
+        if(CouplingCheckBox.isSelected())
+        {
+            couplingcheck = true;
+        }
+        else if(!(CouplingCheckBox.isSelected()))
+        {
+            couplingcheck = false;
+        }
+        
+        if(ControlStructureCheckBox.isSelected())
+        {
+            structurecheck = true;
+        }
+        else if(!(ControlStructureCheckBox.isSelected()))
+        {
+            structurecheck = false;
+        }
+        
+        anzf.CheckBoxValidation(svmcheck,inheritcheck,couplingcheck,structurecheck);
+        
+        try
+        {
+            anzf.getInheritanceCode(filepath);
+        }
+        catch (IOException ex) 
+        {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        try
+        {
+            anzf.getCouplingCode(filepath);
+        }
+        catch (IOException ex) 
+        {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        //Control Structure Complexity
+        try
+        {
+            anzf.getControlStructureConplexity(filepath);
+        }
+        catch(IOException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex);
+        }
         
         try {
             //Passing the code to Analyzeform Text Area
@@ -280,7 +339,8 @@ public class Main extends javax.swing.JFrame {
         
         
         //Calculating Inheritance
-        //anzf.getInheritanceAnalyzer(ctrl.InheritanceAnalyzer(ctrl.getStrArr()));
+        anzf.getInheritanceAnalyzer(ctrl.InheritanceAnalyzer(ctrl.getStrArr()));
+        
         
         try {
             anzf.getVariableComplexity(ctrl.getStrArr(),filepath);
@@ -295,7 +355,85 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        String filename = fl.getName();
+        csFile1 = new CustomFile(filename);
+        csFile1.setFilePath(filepath);
+        csFile2 = new CustomFile("Coupling.java");
+//        csFile.setFileName(filename);
+//        
+//        System.out.println(filename);
+//        
+//        csFile.setFilePath(filepath);
+        fileList.add(csFile1);
+//        fileList.add(csFile2);
         
+//        
+//        System.out.println(fileList.get(0));
+//        //Accessing CouplingMain class
+//        
+//            filetype = "Java";
+//            cpm.setFileList(fileList);
+//            cpm.setFileType(filetype);
+//            cpm.run();
+       cpMain.setFileList(fileList);
+       cpMain.setFileType("java");
+       cpMain.Start();
+       
+       couplingResults = cpMain.getCouplingResults();
+       anzf.getCouplingResults(couplingResults);
+       
+        }
+        else if(filetype.equals("cpp"))
+        {
+            ctrl.setStrArr(CodeViewer.getText().split("\\n"));
+            //Variable Complexity
+            try 
+            {
+                anzf.getCPPVariableComplexity(ctrl.getStrArr(),filepath);
+            } 
+            catch (IOException ex) 
+            {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            
+            //Size Complexity
+            try
+            {
+                anzf.getCPPSizeComplexity(filepath);
+            }
+            catch (Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            
+            //Method Complexity
+            try 
+            {
+                anzf.getCPPMethodComplexity(filepath);
+            }
+            catch (IOException ex)
+            {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            
+            //Calculating Inheritance
+            anzf.getInheritanceAnalyzer(ctrl.CPPInheritanceAnalyzer(ctrl.getStrArr()));
+            
+            //Control Structure Complexity
+            
+            try
+            {
+                anzf.getCPPControlStructureConplexity(filepath);
+            }
+            catch(IOException ex)
+            {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Enter a compatible file");
+        }
     }//GEN-LAST:event_AnalyzeButtonActionPerformed
 
     /**

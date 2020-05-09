@@ -15,9 +15,9 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author Rahal sandeepa
+ * @author Rahal Sandeepa
  */
-    //size compliexity
+
 public class SizeComplexityMeasuring {
     
     Controller ctl = new Controller();
@@ -43,6 +43,35 @@ public class SizeComplexityMeasuring {
     
     
     public ArrayList<String> SizeComplexityInitializer(String filepath) throws IOException, Exception
+    {
+        FileReader read = new FileReader(filepath);
+        BufferedReader br = new BufferedReader(read);
+        
+        String CurrentLine,line;
+		while((line = br.readLine())!= null)
+                {
+                    
+                    CurrentLine=line;
+//                    
+                    findToken(CurrentLine,1);
+//                    
+                }
+                
+                returnValues.add(Integer.toString(Wkw));
+                returnValues.add(Integer.toString(Nkw));
+                returnValues.add(Integer.toString(Wid));
+                returnValues.add(Integer.toString(Nid));
+                returnValues.add(Integer.toString(Wop));
+                returnValues.add(Integer.toString(Nop));
+                returnValues.add(Integer.toString(Wnv));
+                returnValues.add(Integer.toString(Nnv));
+                returnValues.add(Integer.toString(Wsl));
+                returnValues.add(Integer.toString(Nsl));
+                
+                return returnValues;
+    }
+    
+    public ArrayList<String> SizeComplexityInitializerCPP(String filepath) throws IOException, Exception
     {
         FileReader read = new FileReader(filepath);
         BufferedReader br = new BufferedReader(read);
