@@ -85,7 +85,7 @@ public class TotalComplexity extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Total Coplexity Form");
+        jLabel1.setText("Total Complexity Form");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N

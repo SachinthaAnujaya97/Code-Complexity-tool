@@ -5,8 +5,13 @@
  */
 package Analytics;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -17,7 +22,7 @@ public class Controller {
     String[] strArr;
     String[] arithmatic = {"+", "-", ".", "/","%"};
     String[] logical = {"&&", "||", "!"};
-    String[] relation = {"==", "!=", ">", "<", ">=", "<="};
+    String[] relation = {"+","-","*", "/", "=","++", "--" ,"==","!>" ,"<" ,">" ,"<=" ,">=", "&&", "||" , "," , "."};
     String[] bitwise = {"|", "^", "~", "<<", ">>", ">>>", "<<<"};
     String[] miscellaneous = {",", "->", ".", "::"};
     String[] assignment = {"+=", "-=", "*=", "/=", "=", ">>>=", "|=", "&=", "%=", "<<=", ">>=", "^="};
@@ -31,9 +36,40 @@ public class Controller {
         "Interfaces","import","java.awt.Color;","java.io.BufferedReader;","java.io.File;","java.io.FileNotFoundException;",
         "Exception","java.io.FileReader;","java.util.ArrayList;","Code\">//GEN-BEGIN:initComponents","initComponents",
         "javax.swing.JCheckBox();","javax.swing.JCheckBox();","setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);"};
+    String[] Numbers = {"0", "1", "2", "3","4","5","6","7","8","9"};
+    
+    private int count = 0;
+		    private String className = "";
+		    private int No_of_direct_inheritances = 0;
+		    private int No_of_indirect_inheritances = 0;
+		    private int Total_inheritances = 0;
+		    private int Ci = 0;
+
+		    
+		    private String code ;
+		   
+
+                    
+                    ArrayList<String> returnInheritanceValues = new ArrayList<>();
+
+    public String[] getNumbers() {
+        return Numbers;
+    }
+
+    public void setNumbers(String[] Numbers) {
+        this.Numbers = Numbers;
+    }
     
     String [] words;
+    String indentifiers[] = {"(", ";"};
 
+    public String[] getIndentifiers() {
+        return indentifiers;
+    }
+
+    public void setIndentifiers(String[] indentifiers) {
+        this.indentifiers = indentifiers;
+    }
     String regex = "\\\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,4}\\\\b";
     
     public String[] getControlStucts() {
@@ -227,12 +263,8 @@ public class Controller {
     {
         int inheritanceCount = 0;
         
-        for(int i=0; i<str.length; i++)
-        {
-            lst.add(str[i]);
-        }
         
-        for(String line : lst)
+        for(String line : str)
         {
             words = line.split(" ");
             
@@ -251,9 +283,10 @@ public class Controller {
         }
         
         return inheritanceCount;
-        
-        
     }
+    
+      
+                        
     
     public int CPPInheritanceAnalyzer(String [] str)
     {

@@ -268,9 +268,11 @@ public class AnalyzerForm extends javax.swing.JFrame {
     
     public void getInheritanceAnalyzer(int value)
     {
+        
         Ci = value;
         TCps = TCps + Ci;
-        CiValue.setText(Integer.toString(value));
+        
+        CiValue1.setText(Integer.toString(Ci));
     }
     
     public void getMethodComplexity(String filepath) throws FileNotFoundException, IOException
@@ -522,12 +524,6 @@ public class AnalyzerForm extends javax.swing.JFrame {
         CcsppsLabel = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         CcsLabel = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        InheritanceView = new javax.swing.JTextArea();
-        jLabel36 = new javax.swing.JLabel();
-        CiValue = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         CouplingView = new javax.swing.JTextArea();
@@ -590,6 +586,12 @@ public class AnalyzerForm extends javax.swing.JFrame {
         NrmrgvdLabel = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
         CcpValue = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        InheritanceView = new javax.swing.JTextArea();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        CiValue1 = new javax.swing.JLabel();
         finalresultbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -840,27 +842,6 @@ public class AnalyzerForm extends javax.swing.JFrame {
 
         analyzerTab.addTab("Control Stuctures", jPanel4);
 
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        InheritanceView.setColumns(20);
-        InheritanceView.setRows(5);
-        jScrollPane6.setViewportView(InheritanceView);
-
-        jPanel5.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 370, 310));
-
-        jLabel36.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel36.setText("Ci");
-        jPanel5.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
-
-        CiValue.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        CiValue.setText("--");
-        jPanel5.add(CiValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, -1));
-
-        jLabel69.setText("Ci = Weight assigned for that class due to its inheritance pattern");
-        jPanel5.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
-
-        analyzerTab.addTab("Inheritance", jPanel5);
-
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CouplingView.setColumns(20);
@@ -1050,6 +1031,27 @@ public class AnalyzerForm extends javax.swing.JFrame {
 
         analyzerTab.addTab("Coupling", jPanel6);
 
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        InheritanceView.setColumns(20);
+        InheritanceView.setRows(5);
+        jScrollPane6.setViewportView(InheritanceView);
+
+        jPanel5.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 370, 310));
+
+        jLabel69.setText("Ci = Weight assigned for that class due to its inheritance pattern");
+        jPanel5.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        jLabel68.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel68.setText("Ci");
+        jPanel5.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
+
+        CiValue1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        CiValue1.setText("--");
+        jPanel5.add(CiValue1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
+
+        analyzerTab.addTab("Inheritance", jPanel5);
+
         getContentPane().add(analyzerTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 970, 390));
 
         finalresultbutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -1114,7 +1116,7 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private javax.swing.JLabel CcpValue;
     private javax.swing.JLabel CcsLabel;
     private javax.swing.JLabel CcsppsLabel;
-    private javax.swing.JLabel CiValue;
+    private javax.swing.JLabel CiValue1;
     private javax.swing.JLabel CmLabel;
     private javax.swing.JLabel ComplexityLabel;
     private javax.swing.JTextArea CouplingView;
@@ -1203,7 +1205,6 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -1238,6 +1239,7 @@ public class AnalyzerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

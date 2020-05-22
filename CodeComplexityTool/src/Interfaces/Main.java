@@ -73,14 +73,13 @@ public class Main extends javax.swing.JFrame {
         CodeViewer = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         NumOfLines = new javax.swing.JLabel();
-        AnalyzeButton = new javax.swing.JButton();
         svmCheckBox = new javax.swing.JCheckBox();
         InheritanceCheckBox = new javax.swing.JCheckBox();
         CouplingCheckBox = new javax.swing.JCheckBox();
         ControlStructureCheckBox = new javax.swing.JCheckBox();
+        AnalyzeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 800));
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,7 +122,7 @@ public class Main extends javax.swing.JFrame {
         CodeViewer.setRows(5);
         jScrollPane1.setViewportView(CodeViewer);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 770, 330));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 770, 330));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Number of Lines :");
@@ -132,23 +131,6 @@ public class Main extends javax.swing.JFrame {
         NumOfLines.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         NumOfLines.setText("--");
         getContentPane().add(NumOfLines, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 280, -1, -1));
-
-        AnalyzeButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        AnalyzeButton.setText("Analyze");
-        AnalyzeButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AnalyzeButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AnalyzeButtonMouseExited(evt);
-            }
-        });
-        AnalyzeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnalyzeButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(AnalyzeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 710, -1, -1));
 
         svmCheckBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         svmCheckBox.setText("Size , Variables and Method");
@@ -165,6 +147,23 @@ public class Main extends javax.swing.JFrame {
         ControlStructureCheckBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         ControlStructureCheckBox.setText("Control Structures");
         getContentPane().add(ControlStructureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 720, -1, -1));
+
+        AnalyzeButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        AnalyzeButton.setText("Analyze");
+        AnalyzeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AnalyzeButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AnalyzeButtonMouseExited(evt);
+            }
+        });
+        AnalyzeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnalyzeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AnalyzeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 730, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,13 +227,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_FileBrowseButtonActionPerformed
 
     private void AnalyzeButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AnalyzeButtonMouseEntered
-
-        AnalyzeButton.setForeground(Color.RED);
+        // TODO add your handling code here:
     }//GEN-LAST:event_AnalyzeButtonMouseEntered
 
     private void AnalyzeButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AnalyzeButtonMouseExited
-
-        AnalyzeButton.setForeground(Color.BLACK);
+        // TODO add your handling code here:
     }//GEN-LAST:event_AnalyzeButtonMouseExited
 
     private void AnalyzeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalyzeButtonActionPerformed
@@ -417,7 +414,7 @@ public class Main extends javax.swing.JFrame {
             }
             
             //Calculating Inheritance
-            anzf.getInheritanceAnalyzer(ctrl.CPPInheritanceAnalyzer(ctrl.getStrArr()));
+            //anzf.getInheritanceAnalyzer(ctrl.CPPInheritanceAnalyzer(ctrl.getStrArr()));
             
             //Control Structure Complexity
             

@@ -79,11 +79,11 @@ public class MultipleMain extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        FileBrowseButton = new javax.swing.JButton();
         selectedPathField = new javax.swing.JTextField();
         filNameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         FileTypeLabel = new javax.swing.JLabel();
+        FileBrowseButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,15 +95,6 @@ public class MultipleMain extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Select the Java file for evaluation");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
-
-        FileBrowseButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        FileBrowseButton.setText("Browse");
-        FileBrowseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FileBrowseButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(FileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
 
         selectedPathField.setEditable(false);
         selectedPathField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -123,10 +114,19 @@ public class MultipleMain extends javax.swing.JFrame {
         FileTypeLabel.setText("--");
         getContentPane().add(FileTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
 
+        FileBrowseButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        FileBrowseButton1.setText("Browse");
+        FileBrowseButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FileBrowseButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FileBrowseButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileBrowseButtonActionPerformed
+    private void FileBrowseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileBrowseButton1ActionPerformed
 
         //Selecting the file from file explorer
         JFileChooser choose = new JFileChooser();
@@ -181,6 +181,9 @@ public class MultipleMain extends javax.swing.JFrame {
                     
             try 
             {
+                anzf.getDetails(tempctrl.CodeAnalyzer(tempctrl.getStrArr()));
+                anzf.getVariableAnalyze(tempctrl.KeyWordAnalyzer(tempctrl.getStrArr()));
+                
                 anzf.getControlStructureConplexity(tempfilepath);
                 anzf.getInheritanceCode(tempfilepath);
                 anzf.getInheritanceAnalyzer(tempctrl.InheritanceAnalyzer(tempctrl.getStrArr()));
@@ -238,8 +241,7 @@ public class MultipleMain extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, ex);
         }*/
-
-    }//GEN-LAST:event_FileBrowseButtonActionPerformed
+    }//GEN-LAST:event_FileBrowseButton1ActionPerformed
 
     public void unZipFolder(String zipfilepath, String desDir, File filzip)
     {
@@ -342,7 +344,7 @@ public class MultipleMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton FileBrowseButton;
+    private javax.swing.JButton FileBrowseButton1;
     private javax.swing.JLabel FileTypeLabel;
     private javax.swing.JTextField filNameField;
     private javax.swing.JLabel jLabel1;

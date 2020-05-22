@@ -40,7 +40,9 @@ public class SizeComplexityMeasuring {
     ArrayList<String> returnValues = new ArrayList<>();
     String [] keywordArray = ctl.getKeywords();
     String [] OperatorArray = ctl.getLogical();
-    
+    String [] identifierArray = ctl.getIndentifiers();
+    String [] relationArray = ctl.getRelation();
+    String [] numberArray = ctl.getNumbers();
     
     public ArrayList<String> SizeComplexityInitializer(String filepath) throws IOException, Exception
     {
@@ -100,52 +102,188 @@ public class SizeComplexityMeasuring {
                 return returnValues;
     }
     
-    public void findToken(String Currtinline, int val)
+    public void findToken(String line, int val)
     {
         
-            String [] crrline = Currtinline.split(" ");
-            StringTokenizer token = new StringTokenizer(Currtinline);
+            //String [] crrline = Currtinline.split(" ");
+            //StringTokenizer token = new StringTokenizer(Currtinline);
             
-            while(token.hasMoreTokens())
+       
+            if(line.contains("int") 
+					|| line.contains("byte") 
+					||line.contains("short")
+					|| line.contains("long")
+					|| line.contains("float"))
             {
-                String word = token.nextToken();
-                for(int j = 0; j < keywordArray.length; j++)
+                String[] words = line.split(" ");
+                for (String word : words)
                 {
-                    if(word.equals(keywordArray[j]))
+                    for(int i=0; i<keywordArray.length; i++)
                     {
-                        Wkw++;
-                        Nkw++;
+                        if(keywordArray[i].equals(word))
+                        {
+                            Wkw++;
+                            Nkw++;
+                        }
                     }
                 }
-                if(word.equals("class"))
-                {
-                    Wid++;
-                    Nid++;
-                }
-
-                
-                for (String OperatorArray1 : OperatorArray) 
-                {
-                    if (word.equals(OperatorArray1)) {
-                        Wop++;
-                        Nop++;
-                    }
-                }
-                
-                if(word.equals("[0-9]*"))
-                {
-                    Wnv++;
-                    Nnv++;
-                }
-                
-                if(word.equals("String"))
-                {
-                    Wsl++;
-                    Nsl++;
-                }
-
             }
         
+        
+       
+            if (line.contains("(") || line.contains(";"))
+            {
+                String[] words = line.split(" ");
+                
+                for (String word : words)
+                {
+                    for(int i=0; i<identifierArray.length; i++)
+                    {
+                        if(identifierArray[i].equals(word))
+                        {
+                            Wid++;
+                            Nid++;
+                        }
+                    }
+                }
+            }
+        
+        
+       
+            if((line.contains("=") 
+					|| line.contains("+") 
+					||line.contains("-")
+					|| line.contains("/")
+					|| line.contains("*") 
+					|| line.contains("%") 
+					|| line.contains("++")
+					|| line.contains("--")
+					|| line.contains("==")
+					|| line.contains("!>")	
+					|| line.contains("<")	
+					|| line.contains(">")	
+					|| line.contains("<=")
+					|| line.contains(">=")
+					|| line.contains("&&")
+					|| line.contains("||")
+					|| line.contains(",")
+					|| line.contains(".")))
+            {
+                String[] words = line.split(" ");
+                
+                for (String word : words)
+                {
+                    for( int i=0; i<relationArray.length; i++)
+                    {
+                        if(relationArray[i].equals(word))
+                        {
+                            Wop++;
+                            Nop++;
+                        }
+                    }
+                }
+            }
+        
+        
+      
+            if (line.contains("0") 
+					|| line.contains("1") 
+					||line.contains("2")
+					|| line.contains("3")
+					|| line.contains("4") 
+					|| line.contains("5") 
+					|| line.contains("6")
+					|| line.contains("7")
+					|| line.contains("8")
+					|| line.contains("9")) 
+            {
+                String[] words = line.split(" ");
+                
+                for(String word : words)
+                {
+                    for (int i = 0; i < numberArray.length; i++)
+                    {
+                        if(numberArray[i].equals(word))
+                        {
+                            Wnv++;
+                            Nnv++;
+                        }
+                    }
+                }
+                
+            }
+        
+       
+            String tline = line.trim();
+            
+            if(getMethod(tline) != null)
+            {
+                Wsl++;
+                Nsl++;
+            }
+        
+        
+        System.out.println(Wsl);
+//            while(token.hasMoreTokens())
+//            {
+//                String word = token.nextToken();
+//                for(int j = 0; j < keywordArray.length; j++)
+//                {
+//                    if(word.equals(keywordArray[j]))
+//                    {
+//                        Wkw++;
+//                        Nkw++;
+//                    }
+//                }
+//                if(word.equals("class"))
+//                {
+//                    Wid++;
+//                    Nid++;
+//                }
+//
+//
+//                for (String OperatorArray1 : OperatorArray) 
+//                {
+//                    if (word.equals(OperatorArray1)) {
+//                        Wop++;
+//                        Nop++;
+//                    }
+//                }
+//                
+//                if(word.equals("[0-9]*"))
+//                {
+//                    Wnv++;
+//                    Nnv++;
+//                }
+//                
+//                if(word.equals("String"))
+//                {
+//                    Wsl++;
+//                    Nsl++;
+//                }
+//
+//            }
+        
     }
+    
+    public String getMethod(String statement) {
+		String newStr = statement;
+		String method = null;
+		String[] words = newStr.split(" ");
+		
+		if(statement.contains("public") ||statement.contains("private") || statement.contains("void")) 
+		{
+			for(String word :words) {
+				if(word.contains("("))
+				{
+					method = word.substring(0, word.indexOf("(") +1);
+					break;
+				}
+			}
+			
+		}
+		return method;
+		
+	}
     
 }
